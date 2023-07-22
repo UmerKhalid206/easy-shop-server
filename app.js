@@ -11,6 +11,16 @@ const errorHandler = require('./helpers/error-handler')
 app.use(cors());
 app.options('*', cors())              //it means use the cors with whole server using the HTTP requests, like for get, post, update etc
 
+// Middleware to add the CORS header to every response
+app.use((req, res, next) => {
+    // Replace "*" with the specific origin you want to allow, or use req.headers.origin to dynamically allow the requesting origin.
+    res.header('Access-Control-Allow-Origin', 'req.headers.origin');
+    // Additional CORS headers to allow various types of requests
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    next();
+  });
+
 // middleware
 app.use(bodyParser.json())   //by help of this we don't need to convert data coming from frontend into json again and again   //using parser but in modern developement we don't use it, we convert the data instead by using .json() function
 app.use(morgan('tiny'))           //tiny is like an additional feature or format
