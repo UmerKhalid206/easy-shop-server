@@ -53,18 +53,18 @@ dbName: 'eshop-database'
     console.log(err)
 })
 
-// for Developement
-// server
-app.listen(3000, ()=>{      //in second argument its the call back that will be executed if server started running successfully
-    console.log('Server is running http://localhost:3000');
-});
+// // for Developement
+// // server
+// app.listen(3000, ()=>{      //in second argument its the call back that will be executed if server started running successfully
+//     console.log('Server is running http://localhost:3000');
+// });
 
 // for production
 
-// var server = app.listen(process.env.PORT || 3000, function () {
-//     var port = server.address().port;
-//     console.log("Express is working on port " + port)
-// })
+var server = app.listen(process.env.PORT || 3000, function () {
+    var port = server.address().port;
+    console.log("Express is working on port " + port)
+})
 
 // untill 69
 // vid 78 is remaining in part 2 > 08 folder
