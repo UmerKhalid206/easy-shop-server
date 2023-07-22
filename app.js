@@ -11,15 +11,15 @@ const errorHandler = require('./helpers/error-handler')
 app.use(cors());
 app.options('*', cors())              //it means use the cors with whole server using the HTTP requests, like for get, post, update etc
 
-// Middleware to add the CORS header to every response
-app.use((req, res, next) => {
-    // Replace "*" with the specific origin you want to allow, or use req.headers.origin to dynamically allow the requesting origin.
-    res.header('Access-Control-Allow-Origin', 'req.headers.origin');
-    // Additional CORS headers to allow various types of requests
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    next();
-  });
+// // Middleware to add the CORS header to every response
+// app.use((req, res, next) => {
+//     // Replace "*" with the specific origin you want to allow, or use req.headers.origin to dynamically allow the requesting origin.
+//     res.header('Access-Control-Allow-Origin', 'req.headers.origin');
+//     // Additional CORS headers to allow various types of requests
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+//     next();
+//   });
 
 // middleware
 app.use(bodyParser.json())   //by help of this we don't need to convert data coming from frontend into json again and again   //using parser but in modern developement we don't use it, we convert the data instead by using .json() function
@@ -55,16 +55,16 @@ dbName: 'eshop-database'
 
 // for Developement
 // server
-// app.listen(3000, ()=>{      //in second argument its the call back that will be executed if server started running successfully
-//     console.log('Server is running http://localhost:3000');
-// });
+app.listen(3000, ()=>{      //in second argument its the call back that will be executed if server started running successfully
+    console.log('Server is running http://localhost:3000');
+});
 
 // for production
 
-var server = app.listen(process.env.PORT || 3000, function () {
-    var port = server.address().port;
-    console.log("Express is working on port " + port)
-})
+// var server = app.listen(process.env.PORT || 3000, function () {
+//     var port = server.address().port;
+//     console.log("Express is working on port " + port)
+// })
 
 // untill 69
 // vid 78 is remaining in part 2 > 08 folder
